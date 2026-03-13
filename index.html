@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hui Zhao | Email Design Portfolio</title>
+  <meta name="description" content="Email design portfolio of Hui Zhao featuring responsive marketing emails, product launches, training campaigns, and lifecycle communications." />
+  <style>
+    :root {
+      --bg: #f5f5f3;
+      --surface: #ffffff;
+      --surface-2: #f9f8f6;
+      --text: #1f2430;
+      --muted: #667085;
+      --line: #e6e8ec;
+      --accent: #b45309;
+      --accent-dark: #8a3f08;
+      --shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(245, 245, 243, 0.88);
+      border-bottom: 1px solid rgba(230, 232, 236, 0.9);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #fff, #f8f6f2);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: #fff3e8;
+      color: var(--accent-dark);
+      border: 1px solid #f2ddc7;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 58ch;
+      margin-bottom: 24px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: var(--text);
+    }
+
+    .hero-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .hero-preview {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      box-shadow: 0 8px 18px rgba(16, 24, 40, 0.06);
+    }
+
+    .hero-preview img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .hero-notes {
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .note {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 22px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 2vw, 2.4rem);
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 68ch;
+      margin-bottom: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.55rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .work-media {
+      aspect-ratio: 3 / 4.2;
+      background: #f3f1ed;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .work-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.28s ease;
+    }
+
+    .card:hover .work-media img {
+      transform: scale(1.02);
+    }
+
+    .work-body {
+      padding: 20px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: #fff;
+    }
+
+    .work-body h3 {
+      font-size: 1.12rem;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .work-body p {
+      color: var(--muted);
+      margin-bottom: 0;
+      font-size: 0.96rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .skill {
+      background: #fff;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #fff, #f8f6f2);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 54px;
+    }
+
+    .footer {
+      padding: 0 0 42px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 1080px) {
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-card,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-card,
+      .contact-card,
+      .about-card {
+        padding: 20px;
+      }
+
+      .work-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Hui Zhao</a>
+      <div class="nav-links">
+        <a href="#work">Email Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-card">
+        <div>
+          <span class="eyebrow">Email Designer • HTML Email Developer</span>
+          <h1>Simple, polished email design for product, lifecycle, and marketing campaigns.</h1>
+          <p class="lead">
+            I design and build responsive marketing emails with a focus on clarity, visual hierarchy, and scalable production. My work includes product launches, training campaigns, partner communications, newsletters, and promotional email design.
+          </p>
+          <div class="button-row">
+            <a class="btn primary" href="#work">View Email Portfolio</a>
+            <a class="btn secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="hero-preview">
+            <img src="images/CTV-15915_Discover Launch Email.png" alt="Discover launch email design preview" />
+          </div>
+          <div class="hero-notes">
+            <div class="note"><strong>Focus:</strong> responsive email design, marketing communication, platform-ready HTML email.</div>
+            <div class="note"><strong>Tools:</strong> HTML, CSS, Salesforce Marketing Cloud, AMPscript, Figma, Adobe Creative Suite, Jira.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="stats">
+        <div class="stat">
+          <strong>100+</strong>
+          <span>emails designed and developed per year</span>
+        </div>
+        <div class="stat">
+          <strong>11 featured</strong>
+          <span>portfolio samples across launch, academy, and lifecycle campaigns</span>
+        </div>
+        <div class="stat">
+          <strong>End-to-end</strong>
+          <span>from visual layout to production-ready email build</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section id="work">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Featured email designs</h2>
+            <p>
+              A curated selection of email campaigns showing product education, promotional messaging, event marketing, internal communications, and customer engagement. Replace the image folder and text as needed for your GitHub portfolio.
+            </p>
+          </div>
+        </div>
+
+        <div class="work-grid">
+          <article class="card">
+            <div class="work-media"><img src="images/Q3_LearningSpotlight.jpg" alt="Alarm.com Academy learning spotlight email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Training</span><span class="tag">Academy</span></div>
+              <h3>Doorbell Camera Learning Spotlight</h3>
+              <p>Educational campaign promoting doorbell camera resources with structured content blocks, linked video modules, and strong visual organization.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/Q4 2023 LCP DIgest non-enrolled partners.jpg" alt="Lead connection digest email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Partner Marketing</span><span class="tag">Digest</span></div>
+              <h3>Lead Connection Digest</h3>
+              <p>Partner-facing marketing email using a clean editorial layout to explain program value, highlight benefits, and support business growth messaging.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/Santa 2023.png" alt="Holiday Santa campaign email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Seasonal</span><span class="tag">Product Launch</span></div>
+              <h3>Santa Security Holiday Campaign</h3>
+              <p>Seasonal feature announcement with a high-impact hero, festive branding, and product storytelling designed for engagement and awareness.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/Tech Shorts.png" alt="Tech Shorts app resources email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">App Feature</span><span class="tag">Education</span></div>
+              <h3>Tech Shorts Mobile Resource Email</h3>
+              <p>Product education email showcasing app resources with device mockups, numbered benefit sections, and a clear call to action.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/CTV-15312_Alarm Preview Email.png" alt="Alarm Mode preview email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Preview</span><span class="tag">Mobile UI</span></div>
+              <h3>Alarm Mode Preview Email</h3>
+              <p>Feature preview email introducing an upcoming mobile experience using visual product UI, key benefits, and a simplified announcement format.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/CTV-15870 Showpad account activation email.jpg" alt="Showpad activation email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Activation</span><span class="tag">Sales Enablement</span></div>
+              <h3>Showpad Account Activation</h3>
+              <p>Activation email designed to encourage partner adoption with clear messaging, video support, and a single focused CTA.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/MKT_1447 Chicago Academy Marketing.jpg" alt="Chicago academy event email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Event</span><span class="tag">Academy</span></div>
+              <h3>Chicago Academy Event Promotion</h3>
+              <p>Event marketing email promoting in-person training with supporting imagery, benefit icons, and a registration-driven layout.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/MKT_1843 Email Communications for Fill the Coffeepotl.jpg" alt="Internal recognition email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Internal Comms</span><span class="tag">Recognition</span></div>
+              <h3>Fill the Coffeepot Winner Email</h3>
+              <p>Recognition-focused internal email with celebratory styling, strong hierarchy, and a warm, branded communication tone.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/MKT-1178 CSVR21XXP GA Email.jpg" alt="Pro Series CSVR launch email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Product Launch</span><span class="tag">B2B</span></div>
+              <h3>Pro Series CSVR Launch</h3>
+              <p>Hardware launch email using a bold split layout, dark feature section, and concise product benefits for business audiences.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/Academy  Email.jpg" alt="Remote video monitoring webinar email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Webinar</span><span class="tag">Academy</span></div>
+              <h3>Remote Video Monitoring Webinar</h3>
+              <p>Webinar invitation email balancing educational detail with a prominent registration flow and strong academy branding.</p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="work-media"><img src="images/CTV-15915_Discover Launch Email.png" alt="Discover launch marketing email" /></div>
+            <div class="work-body">
+              <div class="meta"><span class="tag">Launch</span><span class="tag">Customer Engagement</span></div>
+              <h3>Discover Launch Email</h3>
+              <p>Customer engagement email introducing a new discovery hub with device-centered visuals, benefit-led copy, and education-oriented content structure.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>About</h2>
+            <p>This section keeps the portfolio personal, professional, and easy for recruiters to scan.</p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Professional summary</h3>
+            <p>
+              I am an email designer and developer with experience creating polished, responsive campaigns for product marketing, partner communications, training programs, and customer education. My work combines visual design, content hierarchy, and production-ready execution.
+            </p>
+            <p>
+              I focus on simple, professional layouts that communicate clearly, support engagement goals, and stay consistent with brand systems.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <h3>Core skills</h3>
+            <div class="skill-row">
+              <span class="skill">HTML Email</span>
+              <span class="skill">Responsive Design</span>
+              <span class="skill">Salesforce Marketing Cloud</span>
+              <span class="skill">AMPscript</span>
+              <span class="skill">HTML</span>
+              <span class="skill">CSS</span>
+              <span class="skill">Figma</span>
+              <span class="skill">Adobe Creative Suite</span>
+              <span class="skill">Campaign Design</span>
+              <span class="skill">Jira Workflow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <h2>Contact</h2>
+          <p>
+            Email: <strong>yolandahui816@gmail.com</strong><br />
+            Location: <strong>Fairfax, VA</strong>
+          </p>
+          <div class="button-row">
+            <a class="btn primary" href="mailto:yolandahui816@gmail.com">Email Me</a>
+            <a class="btn secondary" href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+            <a class="btn secondary" href="https://github.com/" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Hui Zhao. Designed and coded for portfolio presentation.</div>
+  </footer>
+</body>
+</html>
